@@ -1,11 +1,10 @@
-<b>This directory contains code files which represent the concepts of Object Oriented Programming in C#.</b>
-<br>
+**This directory contains code files which represent the concepts of Object Oriented Programming in C#.**
 
-```mermaid
-classDiagram
-GeometricShape (Abstract class) <|-- Circle
-GeometricShape (Abstract class) <|-- Rectangle
-GeometricShape (Abstract class) <|-- Triangle
-```
+**All the various types of shape classes - Circle, Rectangle and Triangle inherit behaviours and attributes from a base generalized Geometric shape abstract class.**
 
-<b>All the various types of shape classes - Circle, Rectangle and Triangle inherit behaviours and attributes from a base generalized Geometric shape abstract class.</b>
+**Concepts Demonstrated**
+
+- Inheritance
+- Dynamic Polymorphism (Method overriding)
+- Abstraction (Abstract classes)
+- Encapsulation (Private class memebers)
