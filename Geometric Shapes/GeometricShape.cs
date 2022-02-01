@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Drawing;
 
 namespace General.Shapes
 {
@@ -7,7 +8,7 @@ namespace General.Shapes
     /// </summary>
     public abstract class GeometricShape
     {
-        private string color;
+        private Color color;
         private bool isFilled;
 
         /// <summary>
@@ -16,24 +17,21 @@ namespace General.Shapes
         /// <param name="color">The color of the shape.</param>
         /// <param name="isFilled">If the shape is filled or not.</param>
         /// <exception cref="ArgumentException">Thrown when color of the shape is an empty string after trimming whitespace.</exception>
-        public GeometricShape(string color, bool isFilled)
+        public GeometricShape(Color color, bool isFilled)
         {
-            color = color.Trim();
-            if(string.IsNullOrEmpty(color))
+            if(color == null)
             {
-                throw new ArgumentException("Color cannot be 0 characters", "color");
+                throw new ArgumentException("Color cannot be null.", "color");
             }
-            else
-            {
-                this.color = color;
-                this.isFilled = isFilled;
-            }
+            
+            this.Color = color;
+            this.isFilled = isFilled;
         }
 
         /// <summary>
         /// Initializes an instance of a geometric shape with a white color and a state of not filled.
         /// </summary>
-        public GeometricShape() : this("White", false)
+        public GeometricShape() : this(Color.White, false)
         {
 
         }
@@ -44,7 +42,7 @@ namespace General.Shapes
         /// <exception cref="ArgumentException">
         /// Thrown when color is set to an empty string even after removing whitespace.
         /// </exception>
-        public string Color
+        public Color Color
         {
             get
             {
@@ -53,14 +51,11 @@ namespace General.Shapes
 
             set
             {
-                if(string.IsNullOrEmpty(value.Trim()))
+                if(value == null)
                 {
-                    throw new ArgumentException("Color value cannot be 0 characters");
+                    throw new ArgumentException("Color value cannot be null.");
                 }
-                else
-                {
-                    this.color = value;
-                }
+                this.color = value;
             }
         }
 
