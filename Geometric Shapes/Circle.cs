@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Drawing;
 
 namespace General.Shapes
 {
@@ -10,20 +11,19 @@ namespace General.Shapes
         private decimal radius;
 
         /// <summary>
-        /// Initializes an instance of a circle shape with a given radius.
+        /// Initializes an instance of a circle shape with a radius of 1 that is filled white in color.
+        /// </summary>
+        public Circle() : this(1)
+        {
+        }
+
+        /// <summary>
+        /// Initializes an instance of a circle shape with a given radius that is filled white in color.
         /// </summary>
         /// <param name="radius">The radius of the circle.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when radius is passed as a value lesser than or equal to 0.</exception>
-        public Circle(decimal radius)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when specifying a radius less than or equal to 0.</exception>
+        public Circle(decimal radius) : this(radius, Color.White, true)
         {
-            if(radius <= 0)
-            {
-                throw new ArgumentOutOfRangeException("Radius cannot be lesser than or equal to 0", "radius");
-            }
-            else
-            {
-                this.radius = radius;
-            }
         }
 
         /// <summary>
@@ -31,27 +31,17 @@ namespace General.Shapes
         /// </summary>
         /// <param name="radius">The radius of the circle.</param>
         /// <param name="color">The color of the circle.</param>
-        /// <param name="IsFilled">The filled state of the circle - Filled or not.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when radius is passed as a value lesser than or equal to 0.</exception>
-        public Circle(decimal radius, string color, bool IsFilled) : base(color, IsFilled)
+        /// <param name="isFilled">The filled state of the circle - Filled or not.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when specifying a radius less than or equal to 0.</exception>
+        /// <exception cref="ArgumentException">Thrown when color of the shape is specified as null.</exception>
+        public Circle(decimal radius, Color color, bool isFilled) : base(color, isFilled)
         {
             if (radius <= 0)
             {
-                throw new ArgumentOutOfRangeException("Radius cannot be lesser than or equal to 0", "radius");
+                throw new ArgumentOutOfRangeException("radius", "The Circle's radius cannot be set to less than or equal to 0.");
             }
-            else
-            {
-                this.radius = radius;
-            }
-        }
-
-        /// <summary>
-        /// Initializes an instance of a circle shape with a radius of 1.
-        /// </summary>
-        public Circle() : this(1)
-        {
-
-
+            
+            this.radius = radius;
         }
 
         /// <summary>
@@ -71,12 +61,10 @@ namespace General.Shapes
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Radius cannot be lesser than or equal to 0", "radius");
+                    throw new ArgumentOutOfRangeException("value", "The Circle's Radius cannot be set to less than or equal to 0.");
                 }
-                else
-                {
-                    this.radius = value;
-                }
+                
+                this.radius = value;
             }
         }
 
@@ -98,7 +86,7 @@ namespace General.Shapes
         {
             get
             {
-                return 2.0m * (decimal)Math.PI * this.Radius;
+                return 2.0M * (decimal)Math.PI * this.Radius;
             }
         }
 
@@ -109,7 +97,7 @@ namespace General.Shapes
         {
             get
             {
-                return 2.0m * this.Radius;
+                return 2.0M * this.Radius;
             }
         }
 
