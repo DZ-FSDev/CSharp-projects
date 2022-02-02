@@ -16,7 +16,7 @@ namespace General.Shapes
         /// </summary>
         /// <param name="color">The color of the shape.</param>
         /// <param name="isFilled">If the shape is filled or not.</param>
-        /// <exception cref="ArgumentException">Thrown when color of the shape is an empty string after trimming whitespace.</exception>
+        /// <exception cref="ArgumentException">Thrown when color of the shape is specified as null.</exception>
         public GeometricShape(Color color, bool isFilled)
         {
             if(color == null)
@@ -40,7 +40,7 @@ namespace General.Shapes
         /// Gets and sets the color of the geometric shape.
         /// </summary>
         /// <exception cref="ArgumentException">
-        /// Thrown when color is set to an empty string even after removing whitespace.
+        /// Thrown when color of the shape is set as null.
         /// </exception>
         public Color Color
         {
@@ -78,7 +78,7 @@ namespace General.Shapes
         }
 
         /// <summary>
-        /// Gets the Perimeter of the shape.
+        /// Gets the perimeter of the shape.
         /// </summary>
         public abstract decimal Perimeter
         {
