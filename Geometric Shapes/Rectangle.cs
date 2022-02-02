@@ -1,8 +1,9 @@
-﻿using System;
+using System;
+using System.Drawing;
 
 namespace General.Shapes
 {
-    /// <summary>
+    /// <summary>  
     /// Represents a rectangle.
     /// </summary>
     public class Rectangle : GeometricShape
@@ -11,28 +12,22 @@ namespace General.Shapes
         private decimal width;
 
         /// <summary>
-        /// Initializes an instance of a rectangle shape with a given height and width.
+        /// Initializes an instance of a rectangle shape with a height and width of 1 that is filled white in color.
+        /// </summary>
+        public Rectangle() : this(1, 1)
+        {
+        }
+
+        /// <summary>
+        /// Initializes an instance of a rectangle shape with a given height and width that is filled white in color.
         /// </summary>
         /// <param name="height">The height of the rectangle.</param>
         /// <param name="width">The width of the rectangle.</param>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when height or width is passed as a value lesser than or equal to 0.
-        /// \</exception>
-        public Rectangle(decimal height, decimal width)
+        /// Thrown when specifying a height or width lesser than or equal to 0.
+        /// </exception>
+        public Rectangle(decimal height, decimal width) : this(height, width, Color.White, true)
         {
-            if (height <= 0)
-            {
-                throw new ArgumentOutOfRangeException("Height cannot be lesser than or equal to 0", "height");
-            }
-            else if(width <= 0)
-            {
-                throw new ArgumentOutOfRangeException("Width cannot be lesser than or equal to 0", "width");
-            }
-            else
-            {
-                this.height = height;
-                this.width = width;
-            }
         }
 
         /// <summary>
@@ -43,31 +38,23 @@ namespace General.Shapes
         /// <param name="color">The color of the rectangle.</param>
         /// <param name="isFilled">The filled state of the rectangle - Filled or not.</param>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when height or width is passed as a value lesser than or equal to 0.
+        /// Thrown when specifying height or width lesser than or equal to 0.
         /// </exception>
         public Rectangle(decimal height, decimal width, string color, bool isFilled) : base(color, isFilled)
         {
             if (height <= 0)
             {
-                throw new ArgumentOutOfRangeException("Height cannot be lesser than or equal to 0", "height");
+                throw new ArgumentOutOfRangeException("height","Height cannot be lesser than or equal to 0");
             }
-            else if (width <= 0)
-            {
-                throw new ArgumentOutOfRangeException("Width cannot be lesser than or equal to 0", "width");
-            }
-            else
-            {
-                this.height = height;
-                this.width = width;
-            }
-        }
 
-        /// <summary>
-        /// Initializes an instance of a rectangle shape with a height and width of 1.
-        /// </summary>
-        public Rectangle() : this(1.0m, 1.0m)
-        {
+            if (width <= 0)
+            {
+                throw new ArgumentOutOfRangeException("width", "Width cannot be lesser than or equal to 0");
+            }
 
+
+            this.height = height;
+            this.width = width;
         }
 
         /// <summary>
@@ -85,12 +72,10 @@ namespace General.Shapes
             {
                 if(value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Height cannot be lesser than or equal to 0", "height");
+                    throw new ArgumentOutOfRangeException("value","Height cannot be lesser than or equal to 0");
                 }
-                else
-                {
-                    this.height = value;
-                }
+                               
+                this.height = value;               
             }
         }
 
@@ -107,7 +92,10 @@ namespace General.Shapes
 
             set
             {
-                throw new ArgumentOutOfRangeException("Width cannot be lesser than or equal to 0", "width");
+                if(value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("value","Width cannot be lesser than or equal to 0");
+                }
             }
         }
 
@@ -129,7 +117,7 @@ namespace General.Shapes
         {
             get
             {
-                return 2.0m * (this.height + this.Width);
+                return 2.0M * (this.height + this.Width);
             }
         }
 
