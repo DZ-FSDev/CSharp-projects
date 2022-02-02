@@ -33,6 +33,7 @@ namespace General.Shapes
         /// <param name="color">The color of the circle.</param>
         /// <param name="isFilled">The filled state of the circle - Filled or not.</param>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when specifying a radius less than or equal to 0.</exception>
+        /// <exception cref="ArgumentException">Thrown when color of the shape is specified as null.</exception>
         public Circle(decimal radius, Color color, bool isFilled) : base(color, isFilled)
         {
             if (radius <= 0)
