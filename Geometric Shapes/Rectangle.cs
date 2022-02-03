@@ -117,7 +117,7 @@ namespace General.Shapes
         {
             get
             {
-                return 2.0M * (this.height + this.Width);
+                return 2.0M * (this.Height + this.Width);
             }
         }
 
